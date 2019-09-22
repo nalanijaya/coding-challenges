@@ -10,7 +10,10 @@ namespace CodeChallengeConsoleApp
         {
             List<int> numList1 = new List<int>() { 1, 2, 4, 4 };
             List<int> numList2 = new List<int>() { 1, 2, 2, 6 };
-            Logic.HasPairWithSum(numList2, 8);
+            List<int> numList3 = new List<int>() { 7, 1 ,3 ,4, 1, 7 };
+            //7 1 3 4 1 7
+            //Logic.HasPairWithSum(numList2, 8);
+            Logic.MinDistance(numList3);
             Console.ReadLine();
         }
     }
