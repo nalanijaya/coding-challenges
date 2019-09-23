@@ -50,5 +50,20 @@ namespace CodeChallenge
             }
             Console.WriteLine("No Pairs Available");
         }
+
+        public static void BonApetit(List<int> bill, int k, int b)
+        {
+            int sumWithNotEatItem = bill.Where((x, i) => i != k).Sum();
+           
+            int halfBill = sumWithNotEatItem / 2;
+            if (halfBill == b)
+            {
+                Console.WriteLine("Bon Appetit");
+            }
+            else
+            {
+                Console.WriteLine(b - halfBill);
+            }
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace CodeChallengeConsoleApp
             List<int> numList3 = new List<int>() { 7, 1 ,3 ,4, 1, 7 };
             //7 1 3 4 1 7
             //Logic.HasPairWithSum(numList2, 8);
-            Logic.MinDistance(numList3);
+            //Logic.MinDistance(numList3);
+            Logic.BonApetit(new List<int> { 3, 10, 2 ,9 },1,12);
             Console.ReadLine();
         }
     }
