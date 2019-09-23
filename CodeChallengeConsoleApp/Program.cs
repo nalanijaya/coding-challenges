@@ -14,7 +14,9 @@ namespace CodeChallengeConsoleApp
             //7 1 3 4 1 7
             //Logic.HasPairWithSum(numList2, 8);
             //Logic.MinDistance(numList3);
-            Logic.BonApetit(new List<int> { 3, 10, 2 ,9 },1,12);
+            //Logic.BonApetit(new List<int> { 3, 10, 2 ,9 },1,12);
+            //Logic.GradingStudents(new List<int> { 73, 67, 38, 33});
+            Logic.JumpingOnClouds(new int[] { 0, 0 ,0 ,0 ,1 ,0});
             Console.ReadLine();
         }
     }
