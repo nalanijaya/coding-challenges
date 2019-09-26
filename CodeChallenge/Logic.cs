@@ -99,8 +99,7 @@ namespace CodeChallenge
             var possiblePairList = pathArray.OfType<int>().ToList().
                 Select((a, b) => new { value = a, idx = b}).Where(x=> x.value == 0);
 
-            List<int> possibleIndexList = new List<int>().
-                AddRange(possiblePairList.Select(x => x.idx).ToList());           
+            List<int> possibleIndexList = possiblePairList.Select(x => x.idx).ToList();           
         
             int jumps = 0;
 
@@ -122,6 +121,24 @@ namespace CodeChallenge
 
             }
             return jumps;
+        }
+
+        // Complete the findDigits function below.
+        public static int FindDigits(int n)
+        {
+            List<int> digitArray = n.ToString().ToCharArray().
+                Select(x => (int)Char.GetNumericValue(x)).ToList();
+            int count = 0;
+            digitArray.ForEach(x =>
+            {
+                
+                if (x != 0 && n % x == 0)
+                {
+                    count++;
+                }
+            });
+            Console.WriteLine(count);
+            return count;
         }
 
     }
