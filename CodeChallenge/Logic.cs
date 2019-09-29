@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,9 +10,9 @@ namespace CodeChallenge
         public static bool HasPairWithSum(List<int> numList, int sum)
         {
             HashSet<int> complements = new HashSet<int>();
-            foreach(var item in numList)
+            foreach (var item in numList)
             {
-                if(complements.Contains(item))
+                if (complements.Contains(item))
                 {
                     Console.WriteLine("Pair Available");
                     return true;
@@ -22,7 +23,7 @@ namespace CodeChallenge
             return false;
         }
 
-        public static void MinDistance(List<int> numList, int[]a)
+        public static void MinDistance(List<int> numList, int[] a)
         {
             List<int> lst = a.OfType<int>().ToList();
             HashSet<int> complements = new HashSet<int>();
@@ -36,12 +37,12 @@ namespace CodeChallenge
                 {
                     //When pair available
                     indices.Add(new List<int> { numList.FindIndex(x => x == item),
-                        numList.FindLastIndex(x => x == item) });                   
+                        numList.FindLastIndex(x => x == item) });
                 }
                 complements.Add(sum - item);
             }
 
-            if(indices.Count > 0)
+            if (indices.Count > 0)
             {
                 //Add diff to another list
                 indices.ForEach(x => x.ForEach(y => diffList.Add(x[1] - x[0])));
@@ -54,7 +55,7 @@ namespace CodeChallenge
         public static void BonApetit(List<int> bill, int k, int b)
         {
             int sumWithNotEatItem = bill.Where((x, i) => i != k).Sum();
-           
+
             int halfBill = sumWithNotEatItem / 2;
             if (halfBill == b)
             {
@@ -69,9 +70,9 @@ namespace CodeChallenge
         public static void GradingStudents(List<int> grades)
         {
             List<int> roundedGrades = new List<int>();
-            foreach(var item in grades)
+            foreach (var item in grades)
             {
-                if(item >= 38)
+                if (item >= 38)
                 {
                     if (item % 5 == 0)
                     {
@@ -90,17 +91,17 @@ namespace CodeChallenge
                 {
                     roundedGrades.Add(item);
                 }
-              
+
             }
             Console.WriteLine(String.Join("\n", roundedGrades));
         }
         public static int JumpingOnClouds(int[] pathArray)
         {
             var possiblePairList = pathArray.OfType<int>().ToList().
-                Select((a, b) => new { value = a, idx = b}).Where(x=> x.value == 0);
+                Select((a, b) => new { value = a, idx = b }).Where(x => x.value == 0);
 
-            List<int> possibleIndexList = possiblePairList.Select(x => x.idx).ToList();           
-        
+            List<int> possibleIndexList = possiblePairList.Select(x => x.idx).ToList();
+
             int jumps = 0;
 
             for (int i = 0; i < possibleIndexList.Count;)
@@ -131,7 +132,7 @@ namespace CodeChallenge
             int count = 0;
             digitArray.ForEach(x =>
             {
-                
+
                 if (x != 0 && n % x == 0)
                 {
                     count++;
@@ -141,5 +142,81 @@ namespace CodeChallenge
             return count;
         }
 
+        // Complete the acmTeam function below.
+        public static int[] AcmTeam(string[] topic)
+        {
+
+            int numOfAttendees = topic.Length;
+            List<int> permutationLst = Enumerable.Range(1, numOfAttendees).ToList();
+            List<string> permutationCombination = new List<string>();
+
+            int count = 0;
+            foreach (var item in permutationLst)
+            {
+                int index = count;
+                while (index < permutationLst.Count - 1)
+                {
+                    permutationCombination.Add(item + "," + permutationLst[index + 1]);
+                    index++;
+                }
+                count++;
+            }
+
+            List<int> numOfTopic = new List<int>();
+            foreach (var item in permutationCombination)
+            {
+                var firstStrMember = item.Split(',')[0];
+                var secondStrMember = item.Split(',')[1];
+                var firstMember = (topic[(Convert.ToInt32(firstStrMember)) - 1]).
+                    ToCharArray().Select(x => (long)Char.GetNumericValue(x)).ToArray();
+
+                var secondMember = (topic[(Convert.ToInt32(secondStrMember)) - 1]).
+                    ToCharArray().Select(x => (long)Char.GetNumericValue(x)).ToArray();
+                int counter = 0;
+                for (int i = 0; i < firstMember.Length; i++)
+                {
+
+                    if ((firstMember[i] + secondMember[i]) >= 1)
+                    {
+                        counter++;
+                    }
+
+                }
+                if (counter > 0)
+                    numOfTopic.Add(counter);
+
+            }
+
+            int maxTopics = numOfTopic.Max();
+            int numOfTeams = numOfTopic.Count(x => x == maxTopics);
+            return new int[] { maxTopics, numOfTeams };
+
+            //Console.WriteLine(String.Join("\n", permutationCombination));
+
+        }
+        // Complete the solve function below.
+        public static int Solve(int n, int[][] operations)
+        {
+          
+            List<long> candleList = Enumerable.Repeat<long>(0, n).ToList();
+
+            for (int x = 0; x < operations.Length; x++)
+            {
+                int firstIndex = operations[x][0];
+                int secIndex = operations[x][1];
+                int thirdIndex = operations[x][2];
+
+                for (int i = firstIndex; i <= secIndex; i++)
+                {
+
+                    candleList[i - 1] = candleList[i - 1]
+                        + thirdIndex;
+                }
+            }
+            int sum = (int)candleList.Sum() / n;
+            return sum;
+            //Console.WriteLine(String.Join("/n", candleList));        }
+
+        }
     }
 }
