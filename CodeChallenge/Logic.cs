@@ -271,5 +271,54 @@ namespace CodeChallenge
            
             return allCuts;
         }
+
+        // Complete the gameOfThrones function below.
+        public static string GameOfThrones(string str)
+        {
+            // Create a list 
+            List<char> list = new List<char>();
+
+            // For each character in input strings, 
+            // remove character if list contains 
+            // else add character to list 
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (list.Contains(str[i]))
+                    list.Remove((char)str[i]);
+                else
+                    list.Add(str[i]);
+            }
+
+            // if character length is even 
+            // list is expected to be empty 
+            // or if character length is odd  
+            // list size is expected to be 1 
+            if (str.Length % 2 == 0 && list.Count == 0 || // if string length is even 
+               (str.Length % 2 == 1 && list.Count == 1)) // if string length is odd 
+                return "YES";
+            else
+                return "NO";
+
+        }
+
+        // Complete the jimOrders function below.
+        public static int[] JimOrders(int[][] orders)
+        {
+            Dictionary<int,int> orderTime = new Dictionary<int, int>();
+            int customerNo = 0;
+            for (int i = 0; i < orders.Length; i++)
+            {
+                int sum = 0;
+                customerNo++;
+                for (int j = 0; j < orders[i].Length; j++)
+                {
+                    sum = sum + orders[i][j];
+                   
+                }
+                orderTime.Add(customerNo,sum);
+            }
+            return orderTime.OrderBy(x => x.Value).
+                Select(y => y.Key).ToArray();
+        }
     }
 }
