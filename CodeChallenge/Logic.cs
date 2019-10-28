@@ -218,5 +218,58 @@ namespace CodeChallenge
             //Console.WriteLine(String.Join("/n", candleList));        }
 
         }
+
+        public static int MaxMin(int k, int[] arr)
+        {
+            var list = arr.OfType<int>().ToList();
+            var listCombi = GetPermutations(list, k);
+            var listA = new List<int>();
+            var listOfListAMaxMinDiff = new List<int>();
+            foreach (var item in listCombi)
+            {
+                foreach (var im in item)
+                {
+                    listA.Add(im);
+                
+                }
+                listOfListAMaxMinDiff.Add(listA.Max() - listA.Min());
+               
+              
+            }
+            //Console.WriteLine(listOfListAMaxMinDiff.Min());
+
+            return listOfListAMaxMinDiff.Min();
+        }
+
+        static IEnumerable<IEnumerable<T>> GetPermutations<T>(IEnumerable<T> list, int length)
+        {
+            if (length == 1)
+                return list.Select(t => new T[] { t });
+
+            return GetPermutations(list, length - 1)
+            .SelectMany(t => list.Where(o => !t.Contains(o)),
+            (t1, t2) => t1.Concat(new T[] { t2 }));
+        }
+
+        public static long HalloweenParty(int k)
+        {
+            long firstCut = 0;
+            long secondCut = 0;
+            long allCuts = 0;
+
+            if (k % 2 == 0)
+            {
+                long halfVal = k / 2;
+                allCuts = halfVal * halfVal;
+            }
+            else
+            {
+                firstCut = k / 2;
+                secondCut = k - firstCut;
+                allCuts = firstCut * secondCut;
+            }
+           
+            return allCuts;
+        }
     }
 }
