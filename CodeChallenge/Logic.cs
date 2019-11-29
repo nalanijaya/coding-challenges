@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace CodeChallenge
 {
@@ -351,5 +353,110 @@ namespace CodeChallenge
             }
             return max_sum;
         }
+
+        public static int[] LeftRotation(int d, int[] inputArr)
+        {
+            int len = inputArr.Length;
+            int[] tempArr = new int[len];
+            for (int i = 0; i < len; i++)
+            {
+                
+                
+                        tempArr[(i+len-d)%len]= inputArr[i];
+                    
+                    
+                    
+                
+            }
+            Console.WriteLine(String.Join(" ", tempArr));
+            return inputArr;
+        }
+
+        public static int[] JobOffers(int[] scores, int[] lowerLimits, 
+            int[] upperLimits)
+        {
+            int min = 0;
+            int max = 0;
+            List<int> countArray = new List<int>();
+            for (int i = 0; i < lowerLimits.Length; i++)
+            {
+                min = lowerLimits[i];
+                max = upperLimits[i];
+                int count = 0;
+                for (int j = 0; j < scores.Length; j++)
+                {
+                    if(min <=scores[j] && scores[j] <= max)
+                    {
+                        count++;
+                    }
+                }
+                countArray.Add(count);
+            }
+            return countArray.ToArray();
+        }
+
+ 
+        public static void PrintLinkedList(SinglyLinkedListNode head)
+        {
+            SinglyLinkedListNode tempNode = head;
+            while (tempNode != null)
+            {
+               
+                Console.WriteLine(tempNode.data);
+                tempNode = head.next;
+            }
+        }
     }
 }
+
+public class SinglyLinkedListNode
+{
+    public int data;
+    public SinglyLinkedListNode next;
+
+    public SinglyLinkedListNode(int nodeData)
+    {
+        this.data = nodeData;
+        this.next = null;
+    }
+}
+
+public class SinglyLinkedList
+{
+    public SinglyLinkedListNode head;
+    public SinglyLinkedListNode tail;
+
+    public SinglyLinkedList()
+    {
+        this.head = null;
+        this.tail = null;
+    }
+
+    public void InsertNode(int nodeData)
+    {
+        SinglyLinkedListNode node = new SinglyLinkedListNode(nodeData);
+
+        if (this.head == null)
+        {
+            this.head = node;
+        }
+        else
+        {
+            this.tail.next = node;
+        }
+
+        this.tail = node;
+    }
+}
+
+// Complete the printLinkedList function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
