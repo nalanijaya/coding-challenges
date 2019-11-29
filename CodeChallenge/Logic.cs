@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace CodeChallenge
 {
@@ -199,7 +196,7 @@ namespace CodeChallenge
         // Complete the solve function below.
         public static int Solve(int n, int[][] operations)
         {
-          
+
             List<long> candleList = Enumerable.Repeat<long>(0, n).ToList();
 
             for (int x = 0; x < operations.Length; x++)
@@ -232,11 +229,11 @@ namespace CodeChallenge
                 foreach (var im in item)
                 {
                     listA.Add(im);
-                
+
                 }
                 listOfListAMaxMinDiff.Add(listA.Max() - listA.Min());
-               
-              
+
+
             }
             //Console.WriteLine(listOfListAMaxMinDiff.Min());
 
@@ -270,7 +267,7 @@ namespace CodeChallenge
                 secondCut = k - firstCut;
                 allCuts = firstCut * secondCut;
             }
-           
+
             return allCuts;
         }
 
@@ -306,7 +303,7 @@ namespace CodeChallenge
         // Complete the jimOrders function below.
         public static int[] JimOrders(int[][] orders)
         {
-            Dictionary<int,int> orderTime = new Dictionary<int, int>();
+            Dictionary<int, int> orderTime = new Dictionary<int, int>();
             int customerNo = 0;
             for (int i = 0; i < orders.Length; i++)
             {
@@ -315,9 +312,9 @@ namespace CodeChallenge
                 for (int j = 0; j < orders[i].Length; j++)
                 {
                     sum = sum + orders[i][j];
-                   
+
                 }
-                orderTime.Add(customerNo,sum);
+                orderTime.Add(customerNo, sum);
             }
             return orderTime.OrderBy(x => x.Value).
                 Select(y => y.Key).ToArray();
@@ -341,9 +338,9 @@ namespace CodeChallenge
                     // Considering mat[i][j] as top  
                     // left cell of hour glass. 
                     int sum = (mat[i][j] + mat[i][j + 1] +
-                               mat[i][ j + 2]) + (mat[i + 1][ j + 1]) +
-                              (mat[i + 2][j] + mat[i + 2][ j + 1] +
-                               mat[i + 2][ j + 2]);
+                               mat[i][j + 2]) + (mat[i + 1][j + 1]) +
+                              (mat[i + 2][j] + mat[i + 2][j + 1] +
+                               mat[i + 2][j + 2]);
 
                     // If previous sum is less then  
                     // current sum then update 
@@ -360,19 +357,14 @@ namespace CodeChallenge
             int[] tempArr = new int[len];
             for (int i = 0; i < len; i++)
             {
-                
-                
-                        tempArr[(i+len-d)%len]= inputArr[i];
-                    
-                    
-                    
-                
+                tempArr[(i + len - d) % len] = inputArr[i];
+
             }
             Console.WriteLine(String.Join(" ", tempArr));
             return inputArr;
         }
 
-        public static int[] JobOffers(int[] scores, int[] lowerLimits, 
+        public static int[] JobOffers(int[] scores, int[] lowerLimits,
             int[] upperLimits)
         {
             int min = 0;
@@ -385,7 +377,7 @@ namespace CodeChallenge
                 int count = 0;
                 for (int j = 0; j < scores.Length; j++)
                 {
-                    if(min <=scores[j] && scores[j] <= max)
+                    if (min <= scores[j] && scores[j] <= max)
                     {
                         count++;
                     }
@@ -395,13 +387,13 @@ namespace CodeChallenge
             return countArray.ToArray();
         }
 
- 
+
         public static void PrintLinkedList(SinglyLinkedListNode head)
         {
             SinglyLinkedListNode tempNode = head;
             while (tempNode != null)
             {
-               
+
                 Console.WriteLine(tempNode.data);
                 tempNode = head.next;
             }
@@ -448,15 +440,3 @@ public class SinglyLinkedList
         this.tail = node;
     }
 }
-
-// Complete the printLinkedList function below.
-
-/*
- * For your reference:
- *
- * SinglyLinkedListNode {
- *     int data;
- *     SinglyLinkedListNode next;
- * }
- *
- */
