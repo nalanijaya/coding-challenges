@@ -123,9 +123,12 @@ namespace CodeChallengeConsoleApp
             //Logic.Solve(5, new int[][]{
 
             //new int[] { 1,2,100 }, new int[] { 2, 5, 100 }, new int[] { 3,4,100 }});
-            Logic.MaxMin(4, new int[] { 1, 2, 3, 4, 10, 20, 30, 40, 100, 200 });
+            //Logic.MaxMin(4, new int[] { 1, 2, 3, 4, 10, 20, 30, 40, 100, 200 });
 
-            Logic.LeftRotation(4, new int[] { 1, 2, 3, 4, 5 });
+            //Logic.LeftRotation(4, new int[] { 1, 2, 3, 4, 5 });
+            //Logic.GetIdealNums(200,405);
+            Logic.Ways(5,3);
+            Logic.MinimumBribes(new int[] { 1 ,2 ,5, 3, 7, 8, 6, 4 });
             Console.ReadLine();
 
         }

@@ -398,7 +398,122 @@ namespace CodeChallenge
                 tempNode = head.next;
             }
         }
+
+        public static long GetIdealNums(long low, long high)
+        {
+            int count = 0;
+
+            for (long i = low; i <= high; i++)
+            {
+                long dVal = i;
+                while (dVal % 3 == 0)
+                    dVal /= 3;
+                while (dVal % 5 == 0)
+                    dVal /= 5;
+                if (dVal == 1)
+                    count++;
+            }
+            return count;
+        }
+
+        public static int FillMissingBrackets(string s)
+        {
+            for (int i = 0; i < s.Length; i++)
+            {
+                string firstStr = s.Substring(0, i);
+                string secondStr = s.Substring(i, s.Length -1);
+                var allowedChars = new HashSet<char>(new[] { '(', '[', '?', ')', ']' });
+                var firstStrStack = new Stack<char>(firstStr.Where(c => allowedChars.Contains(c)));
+                var secondStrStack = new Stack<char>(secondStr.Where(c => allowedChars.Contains(c)));
+
+                for (int j = 0; j < firstStrStack.Count; j++)
+                {
+                   
+                }
+            }
+
+            return 0;
+        }
+
+        /* Function to find out all combinations of 
+   positive numbers that add upto given number. 
+   It uses findCombinationsUtil() */
+        public static int Ways(int total, int k)
+        {
+            // array to store the combinations 
+            // It can contain max n elements 
+            int[] arr =new int[total];
+
+            //find all combinations 
+            int returnVal = WaysUtil(arr, 0, total, total, k);
+            return returnVal % 1000000007;
+        }
+
+        public static int WaysUtil(int[] arr, int index,
+                       int num, int reducedNum, int limit)
+        {
+            
+            // Base condition 
+            if (reducedNum < 0)
+                return 0;
+
+            //// If combination is found, print it 
+            if (reducedNum == 0)
+            {
+                int count = 0;
+                count++;
+                return count;
+            }
+
+            // Find the previous number stored in arr[] 
+            // It helps in maintaining increasing order 
+            int prev = (index == 0) ? 1 : arr[index - 1];
+
+            // note loop starts from previous number 
+            // i.e. at array location index - 1 
+            for (int k = prev; k <= num; k++)
+            {
+                if(k<= limit)
+                {
+                    // next element of array is k 
+                    arr[index] = k;
+                   
+                    // call recursively with reduced number 
+                    WaysUtil(arr, index + 1, num,
+                                             reducedNum - k, limit);
+                }
+                
+            }
+            return 0;
+        }
+
+        // Complete the minimumBribes function below.
+        public static void MinimumBribes(int[] q)
+        {           
+            int count = 0;
+            string msg = "";
+            for (int i = 1; i < q.Length; i++)
+            {
+                if(q[i-1] != i && q[i-1] > i)
+                {
+                    int val = q[i-1] - i;
+                    if (val <= 2)
+                        count = count + val;
+                    else
+                    {
+                        msg = "Too chaotic";                    
+                        Console.WriteLine(msg);
+                        return;
+                    }
+                        
+                }
+            }
+            Console.WriteLine(count.ToString());
+        }
+
     }
+
+
 }
 
 public class SinglyLinkedListNode
