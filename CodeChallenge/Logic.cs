@@ -489,31 +489,35 @@ namespace CodeChallenge
 
         // Complete the minimumBribes function below.
         public static void MinimumBribes(int[] q)
-        {           
+        {
             int count = 0;
             string msg = "";
             for (int i = 1; i < q.Length; i++)
             {
-                if(q[i-1] != i && q[i-1] > i)
+                if (q[i - 1] != i && q[i - 1] > i)
                 {
-                    int val = q[i-1] - i;
+                    int val = q[i - 1] - i;
                     if (val <= 2)
                         count = count + val;
                     else
                     {
-                        msg = "Too chaotic";                    
+                        msg = "Too chaotic";
                         Console.WriteLine(msg);
                         return;
                     }
-                        
+
                 }
             }
             Console.WriteLine(count.ToString());
         }
 
+        // Complete the reverseArray function below.
+        public static int[] ReverseArray(int[] a)
+        {
+            return a.Reverse().ToArray();
+
+        }
     }
-
-
 }
 
 public class SinglyLinkedListNode
