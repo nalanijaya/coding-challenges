@@ -517,6 +517,57 @@ namespace CodeChallenge
             return a.Reverse().ToArray();
 
         }
+
+        public static bool BalanceParanthesis(string expression)
+        {
+            Stack<char> stack = new Stack<char>();
+
+            foreach (var item in expression.ToCharArray())
+            {
+                if(IsOpenTerm(item))
+                {
+                    stack.Push(item);
+                }
+                else
+                {
+                    if(stack.Count == 0 && !IsMatch(stack.Pop(), item))
+                    {
+                        Console.WriteLine("Not Balanced");
+                        return false;
+                    }
+                }
+            }
+            Console.WriteLine("Balanced");
+            return stack.Count == 0;
+        }
+
+        private static bool IsOpenTerm(char c)
+        {
+            char[][] tokens = new char[][]{ new char[]{ '{', '}' },
+                new char[]{ '[', ']' }, new char[]{ '(', ')' } };
+            foreach (char[] item in tokens)
+            {
+                if(item[0] == c)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static bool IsMatch(char openTerm, char closeTerm)
+        {
+            char[][] tokens = new char[][]{ new char[]{ '{', '}' },
+                new char[]{ '[', ']' }, new char[]{ '(', ')' } };
+            foreach (var item in tokens)
+            {
+                if(item[0] == openTerm)
+                {
+                    return item[1] == closeTerm;
+                }
+            }
+            return false;
+        }
     }
 }
 
