@@ -421,14 +421,14 @@ namespace CodeChallenge
             for (int i = 0; i < s.Length; i++)
             {
                 string firstStr = s.Substring(0, i);
-                string secondStr = s.Substring(i, s.Length -1);
+                string secondStr = s.Substring(i, s.Length - 1);
                 var allowedChars = new HashSet<char>(new[] { '(', '[', '?', ')', ']' });
                 var firstStrStack = new Stack<char>(firstStr.Where(c => allowedChars.Contains(c)));
                 var secondStrStack = new Stack<char>(secondStr.Where(c => allowedChars.Contains(c)));
 
                 for (int j = 0; j < firstStrStack.Count; j++)
                 {
-                   
+
                 }
             }
 
@@ -442,7 +442,7 @@ namespace CodeChallenge
         {
             // array to store the combinations 
             // It can contain max n elements 
-            int[] arr =new int[total];
+            int[] arr = new int[total];
 
             //find all combinations 
             int returnVal = WaysUtil(arr, 0, total, total, k);
@@ -452,7 +452,7 @@ namespace CodeChallenge
         public static int WaysUtil(int[] arr, int index,
                        int num, int reducedNum, int limit)
         {
-            
+
             // Base condition 
             if (reducedNum < 0)
                 return 0;
@@ -473,16 +473,16 @@ namespace CodeChallenge
             // i.e. at array location index - 1 
             for (int k = prev; k <= num; k++)
             {
-                if(k<= limit)
+                if (k <= limit)
                 {
                     // next element of array is k 
                     arr[index] = k;
-                   
+
                     // call recursively with reduced number 
                     WaysUtil(arr, index + 1, num,
                                              reducedNum - k, limit);
                 }
-                
+
             }
             return 0;
         }
@@ -524,13 +524,13 @@ namespace CodeChallenge
 
             foreach (var item in expression.ToCharArray())
             {
-                if(IsOpenTerm(item))
+                if (IsOpenTerm(item))
                 {
                     stack.Push(item);
                 }
                 else
                 {
-                    if(stack.Count == 0 && !IsMatch(stack.Pop(), item))
+                    if (stack.Count == 0 && !IsMatch(stack.Pop(), item))
                     {
                         Console.WriteLine("Not Balanced");
                         return false;
@@ -547,7 +547,7 @@ namespace CodeChallenge
                 new char[]{ '[', ']' }, new char[]{ '(', ')' } };
             foreach (char[] item in tokens)
             {
-                if(item[0] == c)
+                if (item[0] == c)
                 {
                     return true;
                 }
@@ -561,12 +561,18 @@ namespace CodeChallenge
                 new char[]{ '[', ']' }, new char[]{ '(', ')' } };
             foreach (var item in tokens)
             {
-                if(item[0] == openTerm)
+                if (item[0] == openTerm)
                 {
                     return item[1] == closeTerm;
                 }
             }
             return false;
+        }
+
+        public static int SimpleArraySum(int[] ar)
+        {
+            Console.WriteLine(ar.Sum());
+            return ar.Sum();
         }
     }
 }

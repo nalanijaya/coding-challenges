@@ -27,9 +27,10 @@ namespace CodeChallengeConsoleApp
 
             //Logic.LeftRotation(4, new int[] { 1, 2, 3, 4, 5 });
             //Logic.GetIdealNums(200,405);
-            Logic.Ways(5,3);
-            Logic.MinimumBribes(new int[] { 1 ,2, 5, 3, 4, 7, 8, 6 });
-            Logic.BalanceParanthesis("{}{(())[[]][({})]()(}");
+            //Logic.Ways(5,3);
+            //Logic.MinimumBribes(new int[] { 1 ,2, 5, 3, 4, 7, 8, 6 });
+            //Logic.BalanceParanthesis("{}{(())[[]][({})]()(}");
+            Logic.SimpleArraySum(new int[] { 1, 2 ,3 ,4,10, 11 });
             Console.ReadLine();
 
         }
