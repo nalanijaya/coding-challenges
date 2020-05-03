@@ -574,7 +574,27 @@ namespace CodeChallenge
             Console.WriteLine(ar.Sum());
             return ar.Sum();
         }
-    }
+
+		public static int MinimumSwaps(int[] ar)
+		{
+			int misMatchPlc = 0;
+			for (int i = 0; i < ar.Length - 1; i++)
+			{
+				int val = ar[i];
+				if (val != Array.IndexOf(ar, val) + 1)
+				{
+					int minValueOfRestOfArray = ar.Skip(i).ToArray().Min();
+					int indexOfMinValueOfRestOfArray = Array.IndexOf(ar, minValueOfRestOfArray);
+					ar[i] = minValueOfRestOfArray;
+					ar[indexOfMinValueOfRestOfArray] = val;
+
+					misMatchPlc++;
+				}
+			}
+			Console.WriteLine(misMatchPlc);
+			return misMatchPlc;
+		}
+	}
 }
 
 public class SinglyLinkedListNode
