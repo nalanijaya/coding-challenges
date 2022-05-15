@@ -717,6 +717,70 @@ namespace CodeChallenge
 			else
 				return 0;
 		}
+
+		public static long StrangeCounter(long t)
+		{			
+			long initialInputNUmber = 3;
+			long decrementInputNUmber = 3;
+
+			var timeWithValue = new Dictionary<long, long>();
+			long time = 1;
+			while (initialInputNUmber != 0)
+			{			
+				timeWithValue.Add(time, initialInputNUmber);
+				initialInputNUmber--;
+				if (time++ > (t))
+					break;
+
+				if (initialInputNUmber == 1)
+				{
+					timeWithValue.Add(time, initialInputNUmber);
+					time++;
+					decrementInputNUmber = decrementInputNUmber * 2;
+					initialInputNUmber = decrementInputNUmber;
+				}
+				
+			}
+
+			Console.WriteLine(timeWithValue[t]);
+			return timeWithValue[t];
+		}
+
+		public static Dictionary<string, int> AverageAgeForEachCompany(List<Employee> employees)
+		{
+			Dictionary<string, int> itemN = new Dictionary<string, int>();
+			employees.GroupBy(emp => emp.Company).Select(ditem => new
+			{
+				CompanyName = ditem.Key,
+				AverageAge = (ditem.Sum(g=>g.Age)/ditem.Count())
+			}).OrderBy(u => u.CompanyName).ToList().ForEach(b => itemN.Add(b.CompanyName, b.AverageAge));
+
+			return itemN;
+		}
+
+		public static Dictionary<string, int> CountOfEmployeesForEachCompany(List<Employee> employees)
+		{
+			Dictionary<string, int> itemN = new Dictionary<string, int>();
+			employees.GroupBy(emp => emp.Company).Select(ditem => new
+			{
+				CompanyName = ditem.Key,
+				EmployeeCount = ditem.Count()
+			}).OrderBy(u => u.CompanyName).ToList().ForEach(b => itemN.Add(b.CompanyName, b.EmployeeCount));
+
+			return itemN;
+		}
+
+		public static Dictionary<string, Employee> OldestAgeForEachCompany(List<Employee> employees)
+		{
+			Dictionary<string, Employee> itemN = new Dictionary<string, Employee>();
+			employees.GroupBy(emp => emp.Company).Select(ditem => new
+			{
+				CompanyName = ditem.Key,
+				OldestAgeEmployee = ditem.OrderByDescending(e=>e.Age).First()
+			}).OrderBy(u => u.CompanyName).ToList().ForEach(b => itemN.Add(b.CompanyName, b.OldestAgeEmployee));
+
+			return itemN;
+		}
 	}
 }
 
@@ -758,4 +822,13 @@ public class SinglyLinkedList
 
 		this.tail = node;
 	}
+}
+
+
+public class Employee
+{
+	public string FirstName { get; set; }
+	public string LastName { get; set; }
+	public int Age { get; set; }
+	public string Company { get; set; }
 }

@@ -39,21 +39,21 @@ namespace CodeChallengeConsoleApp
 			//Logic.findSubstring("qwdftr", 2);
 			//Logic.getBattery(new List<int> { -10, 60, 10 });
 			//Logic.nonDivisibleSubset(7, new List<int> { 278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718,
-	//771, 575, 436 });
-			Logic.DiagonalDifference(new List<List<int>>()
-			{
-				new List<int>(){ 6,6,7,-10,9,-3,8,9,-1},
-				new List<int>(){9,7,-10,6,4,1,6,1,1},
-				new List<int>(){ -1, -2, 4, -6, 1, -4, -6, 3, 9 },
-				new List<int>(){ -8,7,6,-1,-6,-6,6,-7,2 },
-				new List<int>(){ -10,-4,9,1,-7,8,-5,3,-5 },
-				new List<int>(){ -8,-3,-4,2,-3,7,-5,1,-5 },
-				new List<int>(){-2,-7,-4,8,3,-1,8,2,3 },
-				new List<int>(){ -3,4,6,-7,-7,-8,-3,9,-6 },
-				new List<int>(){ -2,0,5,4,4,4,-3,3,0 },
-			});
-
-
+			//771, 575, 436 });
+			//Logic.DiagonalDifference(new List<List<int>>()
+			//{
+			//	new List<int>(){ 6,6,7,-10,9,-3,8,9,-1},
+			//	new List<int>(){9,7,-10,6,4,1,6,1,1},
+			//	new List<int>(){ -1, -2, 4, -6, 1, -4, -6, 3, 9 },
+			//	new List<int>(){ -8,7,6,-1,-6,-6,6,-7,2 },
+			//	new List<int>(){ -10,-4,9,1,-7,8,-5,3,-5 },
+			//	new List<int>(){ -8,-3,-4,2,-3,7,-5,1,-5 },
+			//	new List<int>(){-2,-7,-4,8,3,-1,8,2,3 },
+			//	new List<int>(){ -3,4,6,-7,-7,-8,-3,9,-6 },
+			//	new List<int>(){ -2,0,5,4,4,4,-3,3,0 },
+			//});
+			Logic.StrangeCounter(17);
+			Console.ReadLine();
 		}
     }
 }
